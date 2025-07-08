@@ -1,1 +1,24 @@
+/* Primary Font "Inter" */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 @import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  /* Colors */
+  --color-primary: "#2ecc71";
+  --color-secondary: "#2c3e50";
+  --color-accent: "#ffa500";
+  --color-lightBg: "#f9f9f9";
+  --color-darkBg: "#1a1a1a";
+  --color-textLight: "#ffffff";
+  --color-textDark: "#333333";
+  /* ... */
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
