@@ -38,7 +38,7 @@ const Navbar = () => {
 
         {/* Login/Profile Button */}
         <div className="flex items-center gap-2">
-          <button className="btn btn-sm btn-primary hidden lg:inline text-black">
+          <button className="btn btn-sm btn-primary hidden lg:inline text-white">
             <Link to="/login">Login</Link>
           </button>
 
@@ -58,7 +58,7 @@ const Navbar = () => {
 
       {/* Mobile menu links */}
       <div
-        className={`lg:hidden px-4 transition-all duration-300 ease-in-out ${
+        className={`lg:hidden px-4 transition-all duration-500 ${
           menuOpen ? "max-h-screen py-2" : "max-h-0 overflow-hidden"
         }`}
       >
