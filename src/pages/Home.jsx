@@ -1,8 +1,10 @@
+import Banner from "../components/banner/Banner";
+
 const Home = () => {
   return (
     <div>
-      Home
-      <h1 className="bg-primary">Test Secondary Font font</h1>
+      {/* Banner */}
+      <Banner></Banner>
     </div>
   );
 };
