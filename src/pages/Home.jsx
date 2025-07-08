@@ -1,3 +1,4 @@
+import Advertisement from "../components/advertisement/Advertisement";
 import Banner from "../components/banner/Banner";
 
 const Home = () => {
@@ -5,6 +6,9 @@ const Home = () => {
     <div>
       {/* Banner */}
       <Banner></Banner>
+      <div className="max-w-7xl">
+        <Advertisement></Advertisement>
+      </div>
     </div>
   );
 };
