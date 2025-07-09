@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { HiMenuAlt3, HiOutlineX } from "react-icons/hi";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const links = (
     <>
@@ -18,6 +21,19 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Something went wrong! ${error}`,
+      });
+    }
+  };
   return (
     <nav className="w-full bg-white shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 h-16 relative">
@@ -38,9 +54,26 @@ const Navbar = () => {
 
         {/* Login/Profile Button */}
         <div className="flex items-center gap-2">
-          <button className="btn btn-sm btn-primary hidden lg:inline text-white">
-            <Link to="/login">Login</Link>
-          </button>
+          {user && (
+            <img
+              src={user?.photoURL}
+              alt=""
+              className="w-12 h-12 rounded-full object-cover"
+              title={user?.email}
+            />
+          )}
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="btn btn-sm btn-primary hidden lg:inline text-white"
+            >
+              Logout
+            </button>
+          ) : (
+            <button className="btn btn-sm btn-primary hidden lg:inline text-white">
+              <Link to="/login">Login</Link>
+            </button>
+          )}
 
           {/* Mobile menu toggle */}
           <button
@@ -88,12 +121,18 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/login"
-              className="block py-2 px-2 rounded hover:bg-gray-100"
-            >
-              Login
-            </NavLink>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="btn btn-sm btn-primary hidden lg:inline text-white"
+              >
+                Logout
+              </button>
+            ) : (
+              <button className="btn btn-sm btn-primary hidden lg:inline text-white">
+                <Link to="/login">Login</Link>
+              </button>
+            )}
           </li>
         </ul>
       </div>

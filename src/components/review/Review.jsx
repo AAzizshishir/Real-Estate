@@ -2,7 +2,8 @@ const reviews = [
   {
     id: 1,
     reviewerName: "Md. Rafiq",
-    reviewerImage: "https://i.ibb.co/XYZ/user1.jpg",
+    reviewerImage:
+      "https://i.ibb.co/3y7CV9gL/portrait-male-real-estate-agent.jpg",
     description:
       "The property was exactly as described and the agent was very helpful. Highly recommend!",
     propertyTitle: "Modern Family House",
@@ -10,7 +11,8 @@ const reviews = [
   {
     id: 2,
     reviewerName: "Sarah Akter",
-    reviewerImage: "https://i.ibb.co/XYZ/user2.jpg",
+    reviewerImage:
+      "https://i.ibb.co/3y7CV9gL/portrait-male-real-estate-agent.jpg",
     description:
       "Smooth buying experience, loved the location and overall service.",
     propertyTitle: "Luxury Apartment",
@@ -18,7 +20,8 @@ const reviews = [
   {
     id: 3,
     reviewerName: "Jamal Hossain",
-    reviewerImage: "https://i.ibb.co/XYZ/user3.jpg",
+    reviewerImage:
+      "https://i.ibb.co/3y7CV9gL/portrait-male-real-estate-agent.jpg",
     description: "Transparent process and great support from the agent team.",
     propertyTitle: "Cozy Villa",
   },
