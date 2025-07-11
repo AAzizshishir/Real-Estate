@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Column 1 */}
         <div>
-          <h2 className="text-xl font-bold text-white mb-4">PropEase</h2>
+          <h2 className="text-xl font-bold text-white mb-4">EstateHub</h2>
           <p>Your trusted property partner for all your real estate needs.</p>
         </div>
         {/* Column 2 */}

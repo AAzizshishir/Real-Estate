@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import { HiMenuAlt3, HiOutlineX } from "react-icons/hi";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import "../../pages/dashboardlayout/linksStyle.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,13 +12,34 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink>All Properties</NavLink>
+        <NavLink
+          to={"/all-properties"}
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          All Properties
+        </NavLink>
       </li>
       <li>
-        <NavLink>Dashboard</NavLink>
+        <NavLink
+          to={"/dashboard"}
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
@@ -34,6 +56,7 @@ const Navbar = () => {
       });
     }
   };
+
   return (
     <nav className="w-full bg-white shadow sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 h-16 relative">

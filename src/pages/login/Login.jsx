@@ -27,7 +27,7 @@ const Login = () => {
         timer: 1500,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error.code);
       Swal.fire({
         icon: "error",
         title: "Oops...",
