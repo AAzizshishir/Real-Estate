@@ -1,19 +1,21 @@
 import { Link, NavLink, Outlet } from "react-router";
 import { useState } from "react";
 import { FiMenu } from "react-icons/fi";
-import { MdDashboard, MdOutlineFavoriteBorder } from "react-icons/md";
-import {
-  FaUser,
-  FaRegListAlt,
-  FaPlusSquare,
-  FaList,
-  FaChartBar,
-  FaClipboardList,
-} from "react-icons/fa";
+
 import "../dashboardlayout/linksStyle.css";
+import useAuth from "../../hooks/useAuth";
+import useUserRole from "../../hooks/useUserRole";
+import AgentLinks from "./agentlinks/AgentLinks";
+import AdminLinks from "./adminlinks/AdminLinks";
+import UserLinks from "./userlinks/UserLinks";
 
 const DashboardLayout = () => {
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
+  const { role, isLoading } = useUserRole(user?.email);
+
+  if (isLoading)
+    return <p className="text-center mt-20 text-primary">Loading...</p>;
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -27,100 +29,9 @@ const DashboardLayout = () => {
           <Link to={"/"}>EstateHub</Link>
         </h2>
         <ul className="space-y-3">
-          {/* User Links */}
-          {/* <li>
-            <NavLink
-              to="/dashboard/user/profile"
-              className="flex items-center gap-2 p-2 rounded hover:bg-primary/20 transition"
-            >
-              <FaUser />
-              Profile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/user/wishlist"
-              className="flex items-center gap-2 p-2 rounded hover:bg-primary/20 transition"
-            >
-              <MdOutlineFavoriteBorder />
-              Wishlist
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/user/property-bought"
-              className="flex items-center gap-2 p-2 rounded hover:bg-primary/20 transition"
-            >
-              <FaRegListAlt />
-              Bought
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/user/my-reviews"
-              className="flex items-center gap-2 p-2 rounded hover:bg-primary/20 transition"
-            >
-              <MdDashboard />
-              My Reviews
-            </NavLink>
-          </li> */}
-
-          {/* Agent Links */}
-          <li>
-            <NavLink
-              to="/dashboard/profile"
-              className={({ isActive }) =>
-                isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-              }
-            >
-              <FaUser />
-              Agent Profile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/add-property"
-              className={({ isActive }) =>
-                isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-              }
-            >
-              <FaPlusSquare />
-              Add Property
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/my-properties"
-              className={({ isActive }) =>
-                isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-              }
-            >
-              <FaList />
-              My Added Properties
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/sold-properties"
-              className={({ isActive }) =>
-                isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-              }
-            >
-              <FaChartBar />
-              My Sold Properties
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/dashboard/agent/requested-properties"
-              className={({ isActive }) =>
-                isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-              }
-            >
-              <FaClipboardList />
-              Requested Properties
-            </NavLink>
-          </li>
+          {role === "user" && <UserLinks />}
+          {role === "agent" && <AgentLinks />}
+          {role === "admin" && <AdminLinks />}
         </ul>
       </div>
 
