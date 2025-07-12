@@ -5,6 +5,7 @@ import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import DashboardLayout from "../pages/dashboardlayout/DashboardLayout";
 import AddProperty from "../pages/agentPage/addProperty/AddProperty";
+import ManageUsers from "../pages/adminpage/manageusers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -29,9 +30,15 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout></DashboardLayout>,
     children: [
+      // Agent Routes
       {
         path: "add-property",
         element: <AddProperty></AddProperty>,
+      },
+      // Admin Routes
+      {
+        path: "manage-users",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },
