@@ -2,18 +2,20 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import useAddProperty from "./useAddProperty";
 
 const AddProperty = () => {
   const { user } = useAuth();
-
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+  const { mutate, isPending } = useAddProperty();
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       // image upload
       const imageFile = data.image[0];
@@ -27,18 +29,22 @@ const AddProperty = () => {
       );
       const imageUrl = res.data.data.display_url;
 
-      //   const propertyData = {
-      //     title: data.title,
-      //     location: data.location,
-      //     image: imageUrl,
-      //     agentName: user?.displayName,
-      //     agentEmail: user?.email,
-      //     priceRange: data.priceRange,
-      //     status: "pending", // default status
-      //   };
+      const propertyData = {
+        title: data.title,
+        location: data.location,
+        image: imageUrl,
+        agentName: user?.displayName,
+        agentEmail: user?.email,
+        priceRange: data.priceRange,
+        status: "pending", // default status
+      };
 
-      // Post to your backend
-      //   await axios.post("/api/properties", propertyData);
+      // Post to backend
+      mutate(propertyData, {
+        onSuccess: () => {
+          reset();
+        },
+      });
 
       Swal.fire({
         icon: "success",
@@ -102,7 +108,7 @@ const AddProperty = () => {
         <div>
           <label className="block mb-1">Agent Name</label>
           <input
-            value={user?.displayName}
+            defaultValue={user?.displayName}
             readOnly
             className="w-full input input-bordered bg-gray-100"
             type="text"
@@ -112,7 +118,7 @@ const AddProperty = () => {
         <div>
           <label className="block mb-1">Agent Email</label>
           <input
-            value={user?.email}
+            defaultValue={user?.email}
             readOnly
             className="w-full input input-bordered bg-gray-100"
             type="email"
@@ -132,8 +138,12 @@ const AddProperty = () => {
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
-          Add Property
+        <button
+          type="submit"
+          className="btn btn-primary w-full"
+          disabled={isPending}
+        >
+          {isPending ? "Adding..." : "Add Property"}
         </button>
       </form>
     </div>
