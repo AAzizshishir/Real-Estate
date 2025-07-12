@@ -6,15 +6,40 @@ import { Link } from "react-router";
 import SocialLogin from "../../utils/socialLogin/SocialLogin";
 import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, profileUpdate } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (userInfo) => {
+      const res = await axiosSecure.post("/users", userInfo);
+      return res.data;
+    },
+    onSuccess: () => {
+      Swal.fire({
+        icon: "success",
+        title: "User registered & saved successfully!",
+      });
+      reset();
+    },
+    onError: (error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Failed to save user data!",
+        text: error.response?.data?.message || "Something went wrong",
+      });
+    },
+  });
 
   const onSubmit = async (data) => {
     try {
@@ -40,6 +65,18 @@ const Register = () => {
           displayName: data.name,
           photoURL: imageUrl,
         });
+
+        // ✅ Prepare user data for DB
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          image: imageUrl,
+          role: "user",
+          createdAt: new Date(),
+        };
+
+        // ✅ Save to DB with tanstack mutation
+        mutate(userInfo);
 
         Swal.fire({
           position: "top-end",
@@ -146,6 +183,7 @@ const Register = () => {
             )}
             <button
               onClick={() => setShowPassword(!showPassword)}
+              type="button"
               className="absolute right-3 top-12 transform -translate-y-1/2 text-gray-400 text-sm"
             >
               {showPassword ? <IoEyeOff /> : <IoEye />}
@@ -155,9 +193,10 @@ const Register = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary/90 transition"
+            className="btn btn-primary w-full"
+            disabled={isPending}
           >
-            Register
+            {isPending ? "Registering..." : "Register"}
           </button>
           <div className="divider text-white">OR</div>
           <SocialLogin></SocialLogin>

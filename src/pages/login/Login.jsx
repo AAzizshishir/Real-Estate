@@ -81,6 +81,7 @@ const Login = () => {
 
             <button
               onClick={() => setShowPassword(!showPassword)}
+              type="button"
               className="absolute right-3 top-12 transform -translate-y-1/2 text-gray-400 text-sm"
             >
               {showPassword ? <IoEyeOff /> : <IoEye />}
