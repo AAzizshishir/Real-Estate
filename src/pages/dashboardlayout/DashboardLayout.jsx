@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 

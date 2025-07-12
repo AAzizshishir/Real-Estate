@@ -1,12 +1,12 @@
 import { NavLink } from "react-router";
-import { FaUserShield, FaUsers, FaBuilding, FaCheck } from "react-icons/fa";
+import { FaComments, FaTools, FaUsersCog, FaUserShield } from "react-icons/fa";
 
 const AdminLinks = () => {
   return (
     <>
       <li>
         <NavLink
-          to="/dashboard/admin-profile"
+          to="/dashboard/profile"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
@@ -15,19 +15,6 @@ const AdminLinks = () => {
           Admin Profile
         </NavLink>
       </li>
-
-      <li>
-        <NavLink
-          to="/dashboard/manage-users"
-          className={({ isActive }) =>
-            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-          }
-        >
-          <FaUsers />
-          Manage Users
-        </NavLink>
-      </li>
-
       <li>
         <NavLink
           to="/dashboard/manage-properties"
@@ -35,20 +22,30 @@ const AdminLinks = () => {
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          <FaBuilding />
+          <FaTools />
           Manage Properties
         </NavLink>
       </li>
-
       <li>
         <NavLink
-          to="/dashboard/approve-properties"
+          to="/dashboard/manage-users"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          <FaCheck />
-          Approve Properties
+          <FaUsersCog />
+          Manage Users
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/manage-reviews"
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          <FaComments />
+          Manage Reviews
         </NavLink>
       </li>
     </>

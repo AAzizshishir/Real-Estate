@@ -2,12 +2,10 @@ import { NavLink } from "react-router";
 import {
   FaUser,
   FaPlus,
-  FaList,
   FaCheckCircle,
   FaClipboardList,
+  FaHome,
 } from "react-icons/fa";
-
-import "../linksStyle.css";
 
 const AgentLinks = () => {
   return (
@@ -23,7 +21,6 @@ const AgentLinks = () => {
           Agent Profile
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/dashboard/add-property"
@@ -35,7 +32,6 @@ const AgentLinks = () => {
           Add Property
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/dashboard/my-properties"
@@ -43,14 +39,13 @@ const AgentLinks = () => {
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          <FaList />
+          <FaHome />
           My Added Properties
         </NavLink>
       </li>
-
       <li>
         <NavLink
-          to="/dashboard/my-sold-properties"
+          to="/dashboard/sold-properties"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
@@ -59,7 +54,6 @@ const AgentLinks = () => {
           My Sold Properties
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/dashboard/requested-properties"

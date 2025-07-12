@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { FaUser, FaHome, FaHeart, FaClipboardCheck } from "react-icons/fa";
+import { FaUser, FaHeart, FaShoppingCart, FaStar } from "react-icons/fa";
 
 const UserLinks = () => {
   return (
@@ -12,22 +12,9 @@ const UserLinks = () => {
           }
         >
           <FaUser />
-          User Profile
+          My Profile
         </NavLink>
       </li>
-
-      <li>
-        <NavLink
-          to="/dashboard/my-bookings"
-          className={({ isActive }) =>
-            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
-          }
-        >
-          <FaHome />
-          My Bookings
-        </NavLink>
-      </li>
-
       <li>
         <NavLink
           to="/dashboard/wishlist"
@@ -36,19 +23,29 @@ const UserLinks = () => {
           }
         >
           <FaHeart />
-          My Wishlist
+          Wishlist
         </NavLink>
       </li>
-
       <li>
         <NavLink
-          to="/dashboard/requested-properties"
+          to="/dashboard/bought-properties"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          <FaClipboardCheck />
-          Requested Properties
+          <FaShoppingCart />
+          Property Bought
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/my-reviews"
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          <FaStar />
+          My Reviews
         </NavLink>
       </li>
     </>
