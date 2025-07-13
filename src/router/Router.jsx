@@ -6,6 +6,7 @@ import Register from "../pages/register/Register";
 import DashboardLayout from "../pages/dashboardlayout/DashboardLayout";
 import AddProperty from "../pages/agentPage/addProperty/AddProperty";
 import ManageUsers from "../pages/adminpage/manageusers/ManageUsers";
+import ManageProperties from "../pages/adminpage/manageproperties/ManageProperties";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "manage-users",
         element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "manage-properties",
+        element: <ManageProperties></ManageProperties>,
       },
     ],
   },

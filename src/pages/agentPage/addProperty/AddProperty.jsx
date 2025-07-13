@@ -45,13 +45,10 @@ const AddProperty = () => {
           reset();
         },
       });
-
       Swal.fire({
         icon: "success",
         title: "Property added successfully!",
       });
-
-      reset();
     } catch (error) {
       console.log(error);
       Swal.fire({
