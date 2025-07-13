@@ -13,6 +13,7 @@ const AddProperty = () => {
     formState: { errors },
   } = useForm();
   const { mutate, isPending } = useAddProperty();
+  console.log("isPending:", isPending);
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -32,6 +33,7 @@ const AddProperty = () => {
       const propertyData = {
         title: data.title,
         location: data.location,
+        description: data.description,
         image: imageUrl,
         agentName: user?.displayName,
         agentEmail: user?.email,
@@ -136,12 +138,32 @@ const AddProperty = () => {
           )}
         </div>
 
+        {/* Description */}
+        <div>
+          <label className="block mb-1">Property Description</label>
+          <textarea
+            {...register("description", {
+              required: "Description is required",
+            })}
+            className="w-full textarea textarea-bordered"
+            placeholder="Enter property description"
+            rows={4}
+          ></textarea>
+          {errors.description && (
+            <p className="text-red-500 text-sm">{errors.description.message}</p>
+          )}
+        </div>
+
         <button
           type="submit"
           className="btn btn-primary w-full"
           disabled={isPending}
         >
-          {isPending ? "Adding..." : "Add Property"}
+          {isPending ? (
+            <span className="loading loading-spinner loading-sm"></span>
+          ) : (
+            "Add Property"
+          )}
         </button>
       </form>
     </div>

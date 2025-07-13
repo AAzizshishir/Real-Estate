@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import Loader from "../../components/Loader/Loader";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { MdVerified } from "react-icons/md";
 
 const AllProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,15 +46,22 @@ const AllProperties = () => {
                 />
                 <span>{property.agentName}</span>
               </p>
-              <p
-                className={`font-semibold mt-1 ${
-                  property.status === "verified" && "text-green-600"
-                }`}
-              >
-                {property.status === "verified" && "Verified"}
-              </p>
+              <div className="flex items-center gap-2">
+                <MdVerified
+                  size={24}
+                  className={property.status === "verified" && "text-green-500"}
+                />
+                <span
+                  className={
+                    property.status === "verified" &&
+                    "text-green-500 font-medium"
+                  }
+                >
+                  Verified
+                </span>
+              </div>
             </div>
-            <Link to={`/property/${property._id}`}>
+            <Link to={`/property-details/${property._id}`}>
               <button className="btn btn-primary btn-sm mt-4 w-full">
                 Details
               </button>

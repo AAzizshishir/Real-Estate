@@ -8,6 +8,7 @@ import AddProperty from "../pages/agentPage/addProperty/AddProperty";
 import ManageUsers from "../pages/adminpage/manageusers/ManageUsers";
 import ManageProperties from "../pages/adminpage/manageproperties/ManageProperties";
 import AllProperties from "../pages/allproperties/AllProperties";
+import PropertyDetails from "../pages/propertydetails/PropertyDetails";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "all-properties",
         element: <AllProperties></AllProperties>,
+      },
+      {
+        path: "property-details/:id",
+        element: <PropertyDetails></PropertyDetails>,
       },
     ],
   },

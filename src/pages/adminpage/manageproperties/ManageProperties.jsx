@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import Loader from "../../../components/Loader/Loader";
 
 const ManageProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -43,7 +44,7 @@ const ManageProperties = () => {
     },
   });
 
-  if (isLoading) return <p>Loading properties...</p>;
+  if (isLoading) return <Loader></Loader>;
 
   return (
     <div className="p-4">
