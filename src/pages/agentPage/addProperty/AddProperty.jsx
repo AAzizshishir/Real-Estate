@@ -35,6 +35,7 @@ const AddProperty = () => {
         image: imageUrl,
         agentName: user?.displayName,
         agentEmail: user?.email,
+        agentImage: user?.photoURL,
         priceRange: data.priceRange,
         status: "pending", // default status
       };
