@@ -9,6 +9,8 @@ import ManageUsers from "../pages/adminpage/manageusers/ManageUsers";
 import ManageProperties from "../pages/adminpage/manageproperties/ManageProperties";
 import AllProperties from "../pages/allproperties/AllProperties";
 import PropertyDetails from "../pages/propertydetails/PropertyDetails";
+import Wishlist from "../pages/userpage/wishlist/Wishlist";
+import MakeOffer from "../pages/userpage/makeoffer/MakeOffer";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,15 @@ const router = createBrowserRouter([
       {
         path: "manage-properties",
         element: <ManageProperties></ManageProperties>,
+      },
+      // User Routes
+      {
+        path: "wishlist",
+        element: <Wishlist></Wishlist>,
+      },
+      {
+        path: "wishlist/make-offer/:id",
+        element: <MakeOffer></MakeOffer>,
       },
     ],
   },

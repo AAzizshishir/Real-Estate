@@ -50,7 +50,6 @@ const PropertyDetails = () => {
       priceRange: property.priceRange,
       status: property.status,
       agentName: property.agentName,
-      agentEmail: property.agentEmail,
       userEmail: user?.email,
     };
 

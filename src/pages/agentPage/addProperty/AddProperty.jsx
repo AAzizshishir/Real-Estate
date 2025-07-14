@@ -13,10 +13,8 @@ const AddProperty = () => {
     formState: { errors },
   } = useForm();
   const { mutate, isPending } = useAddProperty();
-  console.log("isPending:", isPending);
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       // image upload
       const imageFile = data.image[0];
