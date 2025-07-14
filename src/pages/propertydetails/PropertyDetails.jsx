@@ -1,13 +1,16 @@
 import { useParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 import Loader from "../../components/Loader/Loader";
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 const PropertyDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const { data: property = {}, isLoading } = useQuery({
     queryKey: ["property", id],
@@ -17,6 +20,42 @@ const PropertyDetails = () => {
     },
     enabled: !!id,
   });
+
+  const { mutate: addToWishlist, isPending } = useMutation({
+    mutationFn: async (wishlistData) => {
+      const res = await axiosSecure.post("/wishlist", wishlistData);
+      res.data;
+    },
+    onSuccess: () => {
+      Swal.fire({
+        icon: "success",
+        title: "Added to Wishlist!",
+      });
+    },
+    onError: (error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Failed to add!",
+        text: error.response?.data?.message || "Something went wrong",
+      });
+    },
+  });
+
+  const handleAddToWishlist = () => {
+    const wishlistData = {
+      propertyId: property._id,
+      title: property.title,
+      image: property.image,
+      location: property.location,
+      priceRange: property.priceRange,
+      status: property.status,
+      agentName: property.agentName,
+      agentEmail: property.agentEmail,
+      userEmail: user?.email,
+    };
+
+    addToWishlist(wishlistData);
+  };
 
   if (isLoading) return <Loader />;
 
@@ -67,6 +106,13 @@ const PropertyDetails = () => {
           Verified
         </span>
       </div>
+      <button
+        className="btn w-full bg-primary mt-2"
+        onClick={handleAddToWishlist}
+        disabled={isPending}
+      >
+        {isPending ? "Adding..." : "Add To Wishlist"}
+      </button>
     </div>
   );
 };
