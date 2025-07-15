@@ -12,6 +12,7 @@ const AddProperty = () => {
     reset,
     formState: { errors },
   } = useForm();
+
   const { mutate, isPending } = useAddProperty();
 
   const onSubmit = async (data) => {
@@ -123,18 +124,21 @@ const AddProperty = () => {
           />
         </div>
 
-        <div>
-          <label className="block mb-1">Price Range</label>
-          <input
-            {...register("priceRange", { required: "Price range is required" })}
-            className="w-full input input-bordered"
-            type="text"
-            placeholder="e.g., $50000 - $80000"
-          />
-          {errors.priceRange && (
-            <p className="text-red-500 text-sm">{errors.priceRange.message}</p>
-          )}
-        </div>
+        <input
+          {...register("priceRange", {
+            required: "Price range is required",
+            pattern: {
+              value: /^\$\d+-\$\d+$/,
+              message: "Price range must be in format: $1111-$2222",
+            },
+          })}
+          className="w-full input input-bordered"
+          type="text"
+          placeholder="e.g., $400000-$500000"
+        />
+        {errors.priceRange && (
+          <p className="text-red-500 text-sm">{errors.priceRange.message}</p>
+        )}
 
         {/* Description */}
         <div>

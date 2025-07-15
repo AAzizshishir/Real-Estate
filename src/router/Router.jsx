@@ -11,6 +11,8 @@ import AllProperties from "../pages/allproperties/AllProperties";
 import PropertyDetails from "../pages/propertydetails/PropertyDetails";
 import Wishlist from "../pages/userpage/wishlist/Wishlist";
 import MakeOffer from "../pages/userpage/makeoffer/MakeOffer";
+import MyProperties from "../pages/agentPage/myproperties/MyProperties";
+import UpdateProperty from "../pages/agentPage/updateproperty/UpdateProperty";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
       {
         path: "add-property",
         element: <AddProperty></AddProperty>,
+      },
+      {
+        path: "my-properties",
+        element: <MyProperties></MyProperties>,
+      },
+      {
+        path: "update-property/:id",
+        element: <UpdateProperty></UpdateProperty>,
       },
       // Admin Routes
       {
