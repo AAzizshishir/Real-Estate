@@ -93,7 +93,8 @@ const MyProperties = () => {
               </span>
             </p>
 
-            <p>Price Range: {property.priceRange}</p>
+            <p>Min Price: ${property.minPrice}</p>
+            <p>Max Price: ${property.maxPrice}</p>
 
             <div className="flex gap-2 mt-4">
               {property.status !== "rejected" && (

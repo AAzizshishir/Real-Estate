@@ -4,11 +4,10 @@ import Loader from "../../../components/Loader/Loader";
 import { MdVerified } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const Wishlist = () => {
   const axiosSecure = useAxiosSecure();
-  const navigate = useNavigate();
 
   const {
     data: wishlists = [],
@@ -76,7 +75,9 @@ const Wishlist = () => {
               <span>{item.location}</span>
             </div>
 
-            <p className="text-gray-700 mb-2">Price: {item.priceRange}</p>
+            <p className="text-gray-700 mb-2">
+              Price: ${item.minPrice} - ${item.maxPrice}
+            </p>
 
             <div className="flex items-center gap-3 mb-3">
               <img
@@ -104,12 +105,11 @@ const Wishlist = () => {
             </div>
 
             <div className="mt-auto flex gap-2">
-              <button
-                onClick={() => navigate(`make-offer/${item._id}`)}
-                className="btn btn-sm btn-primary flex-1"
-              >
-                Make an Offer
-              </button>
+              <Link to={`make-offer/${item._id}`}>
+                <button className="btn btn-sm btn-primary flex-1">
+                  Make an Offer
+                </button>
+              </Link>
               <button
                 onClick={() => handleRemove(item._id)}
                 className="btn btn-sm btn-error flex-1"

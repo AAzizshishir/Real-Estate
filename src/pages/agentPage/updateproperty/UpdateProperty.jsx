@@ -77,7 +77,8 @@ const UpdateProperty = () => {
         image: imageUrl,
         agentName: user?.displayName,
         agentEmail: user?.email,
-        priceRange: data.priceRange,
+        minPrice: data.minPrice,
+        maxPrice: data.maxPrice,
         status: "pending", // আবার pending set করলে এডমিন approve করবে
       };
 
@@ -151,17 +152,29 @@ const UpdateProperty = () => {
         </div>
 
         <div>
-          <label className="block mb-1">Price Range</label>
+          <label className="block mb-1">Minimum Price (USD)</label>
           <input
-            {...register("priceRange", { required: "Price range is required" })}
-            defaultValue={property.priceRange}
+            {...register("minPrice", {
+              required: "Minimum price is required",
+              valueAsNumber: true,
+            })}
             className="w-full input input-bordered"
-            type="text"
-            placeholder="e.g., $400000-$500000"
+            type="number"
+            placeholder="e.g., 400000"
           />
-          {errors.priceRange && (
-            <p className="text-red-500 text-sm">{errors.priceRange.message}</p>
-          )}
+        </div>
+
+        <div>
+          <label className="block mb-1">Maximum Price (USD)</label>
+          <input
+            {...register("maxPrice", {
+              required: "Maximum price is required",
+              valueAsNumber: true,
+            })}
+            className="w-full input input-bordered"
+            type="number"
+            placeholder="e.g., 500000"
+          />
         </div>
 
         <button

@@ -36,7 +36,8 @@ const AllProperties = () => {
                 <strong>Location:</strong> {property.location}
               </p>
               <p className="text-gray-600 mb-1">
-                <strong>Price Range:</strong> {property.priceRange}
+                <strong>Price Range:</strong> ${property.minPrice} - $
+                {property.maxPrice}
               </p>
               <p className="text-gray-600 mb-1 flex items-center gap-2">
                 <img

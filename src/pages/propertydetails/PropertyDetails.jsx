@@ -7,12 +7,14 @@ import Loader from "../../components/Loader/Loader";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import useUserRole from "../../hooks/useUserRole";
 
 const PropertyDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const queryClient = useQueryClient();
+  const { role } = useUserRole(user?.email);
 
   const [showModal, setShowModal] = useState(false);
   const [reviewText, setReviewText] = useState("");
@@ -40,7 +42,7 @@ const PropertyDetails = () => {
   const { mutate: addToWishlist, isPending: isWishlistPending } = useMutation({
     mutationFn: async (wishlistData) => {
       const res = await axiosSecure.post("/wishlist", wishlistData);
-      return res.data; // ✅ fix here
+      return res.data;
     },
     onSuccess: () => {
       Swal.fire({
@@ -100,7 +102,8 @@ const PropertyDetails = () => {
       title: property.title,
       image: property.image,
       location: property.location,
-      priceRange: property.priceRange,
+      minPrice: property.minPrice,
+      maxPrice: property.maxPrice,
       status: property.status,
       agentName: property.agentName,
       userEmail: user?.email,
@@ -130,7 +133,7 @@ const PropertyDetails = () => {
       </p>
 
       <p className="font-semibold text-lg mb-2">
-        Price Range: {property.priceRange}
+        Price Range: ${property.minPrice} - ${property.maxPrice}
       </p>
 
       <div className="flex items-center gap-3 mb-4">
@@ -162,7 +165,7 @@ const PropertyDetails = () => {
       <button
         className="btn w-full bg-primary mt-2"
         onClick={handleAddToWishlist}
-        disabled={isWishlistPending}
+        disabled={isWishlistPending || role !== "user"}
       >
         {isWishlistPending ? "Adding..." : "Add To Wishlist"}
       </button>
@@ -196,6 +199,7 @@ const PropertyDetails = () => {
 
         <button
           onClick={() => setShowModal(true)}
+          disabled={role !== "user"}
           className="btn btn-primary mt-4"
         >
           Add a Review

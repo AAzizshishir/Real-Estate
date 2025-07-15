@@ -172,6 +172,23 @@ const ManageUsers = () => {
                 >
                   {loadingAgent ? "Updating..." : "Make Agent"}
                 </button>
+
+                <button
+                  disabled={loadingDelete}
+                  className="btn btn-sm btn-error"
+                  onClick={() =>
+                    handleAction(
+                      deleteUser,
+                      user._id,
+                      "Delete User?",
+                      "Are you sure you want to delete this user? This action cannot be undone.",
+                      "Yes, Delete"
+                    )
+                  }
+                >
+                  {loadingDelete ? "Deleting..." : "Delete User"}
+                </button>
+
                 {loggedInRole === "admin" && user.role === "agent" && (
                   <button
                     disabled={loadingFraud}
@@ -189,21 +206,6 @@ const ManageUsers = () => {
                     {loadingFraud ? "Updating..." : "Mark Fraud"}
                   </button>
                 )}
-                <button
-                  disabled={loadingDelete}
-                  className="btn btn-sm btn-error"
-                  onClick={() =>
-                    handleAction(
-                      deleteUser,
-                      user._id,
-                      "Delete User?",
-                      "Are you sure you want to delete this user? This action cannot be undone.",
-                      "Yes, Delete"
-                    )
-                  }
-                >
-                  {loadingDelete ? "Deleting..." : "Delete User"}
-                </button>
               </td>
             </tr>
           ))}

@@ -4,22 +4,21 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/Loader/Loader";
+import Swal from "sweetalert2";
 
 const MakeOffer = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: property = {}, isLoading } = useQuery({
-    queryKey: ["property", id],
+  const { data: wishlist = {}, isLoading } = useQuery({
+    queryKey: ["wishlist", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/properties/${id}`);
+      const res = await axiosSecure.get(`/wishlist/${id}`);
       return res.data;
     },
     enabled: !!id,
   });
-
-  console.log(id);
 
   const {
     register,
@@ -29,7 +28,22 @@ const MakeOffer = () => {
 
   if (isLoading) return <Loader />;
 
+  const minPrice = wishlist.minPrice;
+  const maxPrice = wishlist.maxPrice;
+
   const onSubmit = (data) => {
+    const offerAmount = data.offerAmount;
+
+    // ✅ Validate offer amount range here
+    if (offerAmount <= minPrice || offerAmount >= maxPrice) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Offer amount must be between $${minPrice} and $${maxPrice}`,
+      });
+      return;
+    }
+
     console.log(data);
     // Submit logic you will add later
   };
@@ -42,7 +56,7 @@ const MakeOffer = () => {
         <div>
           <label className="block mb-1">Property Title</label>
           <input
-            value={property.title}
+            value={wishlist.title}
             readOnly
             className="w-full input input-bordered bg-gray-100"
           />
@@ -51,7 +65,7 @@ const MakeOffer = () => {
         <div>
           <label className="block mb-1">Property Location</label>
           <input
-            value={property.location}
+            value={wishlist.location}
             readOnly
             className="w-full input input-bordered bg-gray-100"
           />
@@ -60,11 +74,15 @@ const MakeOffer = () => {
         <div>
           <label className="block mb-1">Agent Name</label>
           <input
-            value={property.agentName}
+            value={wishlist.agentName}
             readOnly
             className="w-full input input-bordered bg-gray-100"
           />
         </div>
+
+        <p className="text-gray-700 font-medium">
+          Agent Price Range: ${wishlist.minPrice} - ${wishlist.maxPrice}
+        </p>
 
         <div>
           <label className="block mb-1">Offer Amount</label>
