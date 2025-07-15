@@ -2,10 +2,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
-import useAddProperty from "./useAddProperty";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useMutation } from "@tanstack/react-query";
 
 const AddProperty = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
   const {
     register,
     handleSubmit,
@@ -13,7 +16,26 @@ const AddProperty = () => {
     formState: { errors },
   } = useForm();
 
-  const { mutate, isPending } = useAddProperty();
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (propertyData) => {
+      const res = await axiosSecure.post("/properties", propertyData);
+      return res.data;
+    },
+    onSuccess: () => {
+      reset();
+      Swal.fire({
+        icon: "success",
+        title: "Property added successfully!",
+      });
+    },
+    onError: (error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.response?.data?.message || "Failed to add property!",
+      });
+    },
+  });
 
   const onSubmit = async (data) => {
     try {
@@ -41,22 +63,13 @@ const AddProperty = () => {
         status: "pending", // default status
       };
 
-      // Post to backend
-      mutate(propertyData, {
-        onSuccess: () => {
-          reset();
-        },
-      });
-      Swal.fire({
-        icon: "success",
-        title: "Property added successfully!",
-      });
+      mutate(propertyData);
     } catch (error) {
       console.log(error);
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `Failed to add property! ${error.message}`,
+        text: `Failed to upload image! ${error.message}`,
       });
     }
   };
@@ -124,23 +137,25 @@ const AddProperty = () => {
           />
         </div>
 
-        <input
-          {...register("priceRange", {
-            required: "Price range is required",
-            pattern: {
-              value: /^\$\d+-\$\d+$/,
-              message: "Price range must be in format: $1111-$2222",
-            },
-          })}
-          className="w-full input input-bordered"
-          type="text"
-          placeholder="e.g., $400000-$500000"
-        />
-        {errors.priceRange && (
-          <p className="text-red-500 text-sm">{errors.priceRange.message}</p>
-        )}
+        <div>
+          <label className="block mb-1">Price Range</label>
+          <input
+            {...register("priceRange", {
+              required: "Price range is required",
+              pattern: {
+                value: /^\$\d+-\$\d+$/,
+                message: "Price range must be in format: $1111-$2222",
+              },
+            })}
+            className="w-full input input-bordered"
+            type="text"
+            placeholder="e.g., $400000-$500000"
+          />
+          {errors.priceRange && (
+            <p className="text-red-500 text-sm">{errors.priceRange.message}</p>
+          )}
+        </div>
 
-        {/* Description */}
         <div>
           <label className="block mb-1">Property Description</label>
           <textarea
@@ -161,11 +176,7 @@ const AddProperty = () => {
           className="btn btn-primary w-full"
           disabled={isPending}
         >
-          {isPending ? (
-            <span className="loading loading-spinner loading-sm"></span>
-          ) : (
-            "Add Property"
-          )}
+          {isPending ? "Adding.." : "Add Property"}
         </button>
       </form>
     </div>
