@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loader from "../../../components/Loader/Loader";
@@ -11,6 +11,7 @@ const MakeOffer = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
+  // Get wishlist data by id
   const { data: wishlist = {}, isLoading } = useQuery({
     queryKey: ["wishlist", id],
     queryFn: async () => {
@@ -24,28 +25,56 @@ const MakeOffer = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-
-  if (isLoading) return <Loader />;
 
   const minPrice = wishlist.minPrice;
   const maxPrice = wishlist.maxPrice;
 
+  // Mutation for submit offer
+  const { mutate: submitOffer, isPending } = useMutation({
+    mutationFn: async (offerData) => {
+      const res = await axiosSecure.post("/offers", offerData);
+      return res.data;
+    },
+    onSuccess: () => {
+      Swal.fire("Success!", "Offer submitted successfully!", "success");
+      reset();
+    },
+    onError: () => {
+      Swal.fire("Error!", "Failed to submit offer.", "error");
+    },
+  });
+
+  if (isLoading) return <Loader />;
+
   const onSubmit = (data) => {
     const offerAmount = data.offerAmount;
 
-    // ✅ Validate offer amount range here
+    // ✅ Validate offer amount range
     if (offerAmount <= minPrice || offerAmount >= maxPrice) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Invalid Amount",
         text: `Offer amount must be between $${minPrice} and $${maxPrice}`,
       });
       return;
     }
 
-    console.log(data);
-    // Submit logic you will add later
+    const offerData = {
+      propertyId: wishlist.propertyId,
+      title: wishlist.title,
+      location: wishlist.location,
+      image: wishlist.image,
+      agentName: wishlist.agentName,
+      offerAmount: offerAmount,
+      buyerEmail: user?.email,
+      buyerName: user?.displayName,
+      buyingDate: data.buyingDate,
+      status: "pending",
+    };
+
+    submitOffer(offerData);
   };
 
   return (
@@ -81,11 +110,11 @@ const MakeOffer = () => {
         </div>
 
         <p className="text-gray-700 font-medium">
-          Agent Price Range: ${wishlist.minPrice} - ${wishlist.maxPrice}
+          Agent Price Range: ${minPrice} - ${maxPrice}
         </p>
 
         <div>
-          <label className="block mb-1">Offer Amount</label>
+          <label className="block mb-1">Offer Amount (usd)</label>
           <input
             {...register("offerAmount", {
               required: "Offer amount is required",
@@ -129,8 +158,12 @@ const MakeOffer = () => {
           )}
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
-          Make Offer
+        <button
+          type="submit"
+          className="btn btn-primary w-full"
+          disabled={isPending}
+        >
+          {isPending ? "Submitting..." : "Make Offer"}
         </button>
       </form>
     </div>
