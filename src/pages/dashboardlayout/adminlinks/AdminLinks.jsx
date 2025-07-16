@@ -1,5 +1,11 @@
 import { NavLink } from "react-router";
-import { FaComments, FaTools, FaUsersCog, FaUserShield } from "react-icons/fa";
+import {
+  FaBullhorn,
+  FaComments,
+  FaTools,
+  FaUsersCog,
+  FaUserShield,
+} from "react-icons/fa";
 
 const AdminLinks = () => {
   return (
@@ -46,6 +52,17 @@ const AdminLinks = () => {
         >
           <FaComments />
           Manage Reviews
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/advertise-properties"
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          <FaBullhorn />
+          Advertise Properties
         </NavLink>
       </li>
     </>

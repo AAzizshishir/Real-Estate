@@ -1,31 +1,45 @@
-const content = [
-  {
-    id: 1,
-    image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
-    title: "Modern Family House",
-    location: "Uttara, Dhaka",
-    priceRange: "$250,000 - $300,000",
-    isVerified: true,
-  },
-  {
-    id: 2,
-    image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
-    title: "Luxury Apartment",
-    location: "Gulshan, Dhaka",
-    priceRange: "$400,000 - $500,000",
-    isVerified: false,
-  },
-  {
-    id: 3,
-    image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
-    title: "Cozy Villa",
-    location: "Dhanmondi, Dhaka",
-    priceRange: "$350,000 - $420,000",
-    isVerified: true,
-  },
-];
+// const content = [
+//   {
+//     id: 1,
+//     image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
+//     title: "Modern Family House",
+//     location: "Uttara, Dhaka",
+//     priceRange: "$250,000 - $300,000",
+//     isVerified: true,
+//   },
+//   {
+//     id: 2,
+//     image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
+//     title: "Luxury Apartment",
+//     location: "Gulshan, Dhaka",
+//     priceRange: "$400,000 - $500,000",
+//     isVerified: false,
+//   },
+//   {
+//     id: 3,
+//     image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
+//     title: "Cozy Villa",
+//     location: "Dhanmondi, Dhaka",
+//     priceRange: "$350,000 - $420,000",
+//     isVerified: true,
+//   },
+// ];
+
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router";
 
 const Advertisement = () => {
+  const axiosSecure = useAxiosSecure();
+
+  const { data: advertise = [] } = useQuery({
+    queryKey: ["advertise"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/advertised");
+      return res.data;
+    },
+  });
+
   return (
     <section className="py-12 px-4 md:px-8 lg:px-16 bg-gray-100 dark:bg-neutral-900 mt-20">
       <div className="text-center mb-10">
@@ -38,9 +52,9 @@ const Advertisement = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {content.map((item) => (
+        {advertise.map((item) => (
           <div
-            key={item.id}
+            key={item._id}
             className="bg-white dark:bg-neutral-800 shadow-lg rounded-lg overflow-hidden flex flex-col"
           >
             <img
@@ -58,23 +72,21 @@ const Advertisement = () => {
                   {item.location}
                 </p>
                 <p className="text-primary font-medium mt-2">
-                  {item.priceRange}
+                  ${item.minPrice} - ${item.maxPrice}
                 </p>
 
                 <p
-                  className={`mt-2 inline-block px-3 py-1 rounded-full text-xs ${
-                    item.isVerified
-                      ? "bg-green-100 text-green-600"
-                      : "bg-yellow-100 text-yellow-600"
-                  }`}
+                  className={`mt-2 inline-block px-3 py-1 rounded-full text-xs bg-green-100 text-green-600 `}
                 >
-                  {item.isVerified ? "Verified" : "Pending Verification"}
+                  Verified
                 </p>
               </div>
 
-              <button className="mt-5 w-full bg-primary text-white py-2 rounded hover:bg-primary/90 transition-all">
-                View Details
-              </button>
+              <Link to={`/property-details/${item._id}`}>
+                <button className="mt-5 btn w-full bg-primary text-white py-2 rounded hover:bg-primary/90 transition-all">
+                  View Details
+                </button>
+              </Link>
             </div>
           </div>
         ))}
