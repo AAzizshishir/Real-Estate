@@ -106,6 +106,8 @@ const PropertyDetails = () => {
       maxPrice: property.maxPrice,
       status: property.status,
       agentName: property.agentName,
+      agentEmail: property.agentEmail,
+      userName: user?.displayName,
       userEmail: user?.email,
     };
 

@@ -67,6 +67,7 @@ const MakeOffer = () => {
       location: wishlist.location,
       image: wishlist.image,
       agentName: wishlist.agentName,
+      agentEmail: wishlist.agentEmail,
       offerAmount: offerAmount,
       buyerEmail: user?.email,
       buyerName: user?.displayName,

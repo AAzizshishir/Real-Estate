@@ -15,6 +15,7 @@ import MyProperties from "../pages/agentPage/myproperties/MyProperties";
 import UpdateProperty from "../pages/agentPage/updateproperty/UpdateProperty";
 import MyReviews from "../pages/userpage/myreviews/MyReviews";
 import PropertyBought from "../pages/userpage/propertybought/PropertyBought";
+import RequestedProperties from "../pages/agentPage/requestedproperty/RequestedProperties";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "update-property/:id",
         element: <UpdateProperty></UpdateProperty>,
+      },
+      {
+        path: "requested-properties",
+        element: <RequestedProperties></RequestedProperties>,
       },
       // Admin Routes
       {

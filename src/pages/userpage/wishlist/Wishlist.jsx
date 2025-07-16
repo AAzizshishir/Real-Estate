@@ -5,9 +5,11 @@ import { MdVerified } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import useAuth from "../../../hooks/useAuth";
 
 const Wishlist = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const {
     data: wishlists = [],
@@ -16,7 +18,7 @@ const Wishlist = () => {
   } = useQuery({
     queryKey: ["wishlists"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/wishlist");
+      const res = await axiosSecure.get(`/wishlist?email=${user?.email}`);
       return res.data;
     },
   });
