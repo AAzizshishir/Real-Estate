@@ -17,6 +17,7 @@ import MyReviews from "../pages/userpage/myreviews/MyReviews";
 import PropertyBought from "../pages/userpage/propertybought/PropertyBought";
 import RequestedProperties from "../pages/agentPage/requestedproperty/RequestedProperties";
 import Payment from "../pages/userpage/payment/Payment";
+import SoldProperties from "../pages/agentPage/soldProperties/SoldProperties";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "update-property/:id",
         element: <UpdateProperty></UpdateProperty>,
+      },
+      {
+        path: "sold-properties",
+        element: <SoldProperties></SoldProperties>,
       },
       {
         path: "requested-properties",
