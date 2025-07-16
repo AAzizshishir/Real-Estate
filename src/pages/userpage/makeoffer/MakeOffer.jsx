@@ -52,7 +52,7 @@ const MakeOffer = () => {
     const offerAmount = data.offerAmount;
 
     // ✅ Validate offer amount range
-    if (offerAmount <= minPrice || offerAmount >= maxPrice) {
+    if (offerAmount < minPrice || offerAmount > maxPrice) {
       Swal.fire({
         icon: "error",
         title: "Invalid Amount",
@@ -63,6 +63,7 @@ const MakeOffer = () => {
 
     const offerData = {
       propertyId: wishlist.propertyId,
+      wishlistId: wishlist._id,
       title: wishlist.title,
       location: wishlist.location,
       image: wishlist.image,

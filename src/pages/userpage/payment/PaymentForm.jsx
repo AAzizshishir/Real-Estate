@@ -82,6 +82,9 @@ const PaymentForm = () => {
 
       await axiosSecure.patch(`/offers/${offerId}`, paymentInfo);
 
+      // Remove from Wishlist
+      await axiosSecure.delete(`/wishlist/${offer.wishlistId}`);
+
       Swal.fire("Success!", "Payment successful.", "success");
     }
 
