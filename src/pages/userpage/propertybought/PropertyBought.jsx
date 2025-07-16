@@ -44,19 +44,29 @@ const PropertyBought = () => {
             <p className="font-semibold text-green-600 mb-2">
               Offered: ${property.offerAmount}
             </p>
-            <p className="text-sm text-gray-500">Status: {property.status}</p>
+
+            <span
+              className={`
+        mb-2 rounded font-semibold
+      ${property.status === "accepted" ? " text-green-800" : ""}
+      ${property.status === "rejected" ? " text-red-800" : ""}
+      ${property.status === "bought" ? " text-blue-800" : ""}
+    `}
+            >
+              {property.status}
+            </span>
+
             {property.status === "accepted" && (
-              <button
-                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded transition duration-300"
-                // onClick={() => handlePay(property)}
-              >
-                Pay Now
-              </button>
+              <Link to={`/dashboard/payment/${property._id}`}>
+                <button className="w-full btn bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded transition duration-300">
+                  Pay Now
+                </button>
+              </Link>
             )}
 
             {property.status === "bought" && (
               <p className="text-green-600 font-semibold">
-                {/* Transaction ID: {property.transactionId} */}
+                Transaction ID: {property.transactionId}
               </p>
             )}
           </div>
