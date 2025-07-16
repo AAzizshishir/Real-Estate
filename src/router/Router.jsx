@@ -18,6 +18,7 @@ import PropertyBought from "../pages/userpage/propertybought/PropertyBought";
 import RequestedProperties from "../pages/agentPage/requestedproperty/RequestedProperties";
 import Payment from "../pages/userpage/payment/Payment";
 import SoldProperties from "../pages/agentPage/soldProperties/SoldProperties";
+import ManageReviews from "../pages/adminpage/managereviews/ManageReviews";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
         path: "manage-properties",
         element: <ManageProperties></ManageProperties>,
+      },
+      {
+        path: "manage-reviews",
+        element: <ManageReviews></ManageReviews>,
       },
       // User Routes
       {
