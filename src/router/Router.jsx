@@ -20,6 +20,7 @@ import Payment from "../pages/userpage/payment/Payment";
 import SoldProperties from "../pages/agentPage/soldProperties/SoldProperties";
 import ManageReviews from "../pages/adminpage/managereviews/ManageReviews";
 import AdvertiseProperties from "../pages/adminpage/advertiseproperties/AdvertiseProperties";
+import PrivateRoutes from "../routes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -40,17 +41,29 @@ const router = createBrowserRouter([
       },
       {
         path: "all-properties",
-        element: <AllProperties></AllProperties>,
+        element: (
+          <PrivateRoutes>
+            <AllProperties></AllProperties>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "property-details/:id",
-        element: <PropertyDetails></PropertyDetails>,
+        element: (
+          <PrivateRoutes>
+            <PropertyDetails></PropertyDetails>
+          </PrivateRoutes>
+        ),
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoutes>
+    ),
     children: [
       // Agent Routes
       {

@@ -165,7 +165,7 @@ const PropertyDetails = () => {
       </div>
 
       <button
-        className="btn w-full bg-primary mt-2"
+        className="btn w-full bg-primary text-white py-2 rounded hover:bg-primary/90 transition-all mt-2"
         onClick={handleAddToWishlist}
         disabled={isWishlistPending || role !== "user"}
       >

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../../utils/socialLogin/SocialLogin";
 import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
@@ -13,6 +13,9 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, profileUpdate } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from || "/";
   const {
     register,
     handleSubmit,
@@ -77,14 +80,7 @@ const Register = () => {
 
         // ✅ Save to DB with tanstack mutation
         mutate(userInfo);
-
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Account Created Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        navigate(from);
       } else {
         console.log("Image upload failed");
         Swal.fire({

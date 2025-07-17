@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import SocialLogin from "../../utils/socialLogin/SocialLogin";
@@ -9,6 +9,10 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuth();
+  const location = useLocation();
+  const from = location?.state?.from || "/";
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -26,6 +30,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(from);
     } catch (error) {
       console.log(error.code);
       Swal.fire({
@@ -96,7 +101,7 @@ const Login = () => {
             Login
           </button>
           <div className="divider text-white">OR</div>
-          <SocialLogin></SocialLogin>
+          <SocialLogin from={from}></SocialLogin>
         </form>
 
         <p className="text-center mt-4 text-sm text-gray-600">
