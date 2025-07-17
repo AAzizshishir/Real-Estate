@@ -23,11 +23,13 @@ import AdvertiseProperties from "../pages/adminpage/advertiseproperties/Advertis
 import PrivateRoutes from "../routes/PrivateRoutes";
 import AdminRoutes from "../routes/AdminRoutes";
 import AgentRoutes from "../routes/AgentRoutes";
+import PageNotFound from "../pages/pagenotfound/PageNotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement: <PageNotFound></PageNotFound>,
     children: [
       {
         index: true,
