@@ -1,33 +1,17 @@
-const reviews = [
-  {
-    id: 1,
-    reviewerName: "Md. Rafiq",
-    reviewerImage:
-      "https://i.ibb.co/3y7CV9gL/portrait-male-real-estate-agent.jpg",
-    description:
-      "The property was exactly as described and the agent was very helpful. Highly recommend!",
-    propertyTitle: "Modern Family House",
-  },
-  {
-    id: 2,
-    reviewerName: "Sarah Akter",
-    reviewerImage:
-      "https://i.ibb.co/3y7CV9gL/portrait-male-real-estate-agent.jpg",
-    description:
-      "Smooth buying experience, loved the location and overall service.",
-    propertyTitle: "Luxury Apartment",
-  },
-  {
-    id: 3,
-    reviewerName: "Jamal Hossain",
-    reviewerImage:
-      "https://i.ibb.co/3y7CV9gL/portrait-male-real-estate-agent.jpg",
-    description: "Transparent process and great support from the agent team.",
-    propertyTitle: "Cozy Villa",
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Review = () => {
+  const axiosSecure = useAxiosSecure();
+
+  const { data: reviews = [] } = useQuery({
+    queryKey: ["latest-reviews"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("latest-reviews");
+      return res.data;
+    },
+  });
+
   return (
     <section className="py-12 px-4 md:px-8 lg:px-16 bg-white dark:bg-neutral-900 mt-20">
       <div className="text-center mb-10">
@@ -55,11 +39,13 @@ const Review = () => {
                 <h3 className="font-semibold text-gray-800 dark:text-white">
                   {review.reviewerName}
                 </h3>
-                <p className="text-xs text-gray-500">{review.propertyTitle}</p>
               </div>
             </div>
+            <h2 className="text-2xl font-bold mb-2 text-white">
+              {review.propertyTitle}
+            </h2>
             <p className="text-gray-700 dark:text-gray-300 italic">
-              "{review.description}"
+              "{review.text}"
             </p>
           </div>
         ))}

@@ -51,7 +51,7 @@ const Advertisement = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {advertise.map((item) => (
           <div
             key={item._id}
@@ -60,7 +60,7 @@ const Advertisement = () => {
             <img
               src={item.image}
               alt={item.title}
-              className="h-48 w-full object-cover"
+              className="h-64 w-full object-cover"
             />
 
             <div className="p-5 flex-1 flex flex-col justify-between">

@@ -67,7 +67,9 @@ const ManageProperties = () => {
               <td className="py-2 px-4">{property.location}</td>
               <td className="py-2 px-4">{property.agentName}</td>
               <td className="py-2 px-4">{property.agentEmail}</td>
-              <td className="py-2 px-4">{property.priceRange}</td>
+              <td className="py-2 px-4">
+                ${property.minPrice} - ${property.maxPrice}
+              </td>
               <td className="py-2 px-4 flex gap-2">
                 {property.status === "verified" ? (
                   <span className="text-green-600 font-semibold mt-3">

@@ -77,6 +77,7 @@ const Navbar = () => {
 
         {/* Login/Profile Button */}
         <div className="flex items-center gap-2">
+          {user && <h2 className="font-semibold">{user.displayName}</h2>}
           {user && (
             <img
               src={user?.photoURL}

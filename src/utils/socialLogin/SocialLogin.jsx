@@ -38,7 +38,9 @@ const SocialLogin = ({ from }) => {
       const saveUser = {
         name: loggedUser.displayName,
         email: loggedUser.email,
-        image: loggedUser.photoURL,
+        image:
+          loggedUser.photoURL ||
+          "https://i.ibb.co/4zjdCNs/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg",
         role: "user", // default role
       };
 

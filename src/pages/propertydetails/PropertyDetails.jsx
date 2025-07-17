@@ -107,6 +107,7 @@ const PropertyDetails = () => {
       status: property.status,
       agentName: property.agentName,
       agentEmail: property.agentEmail,
+      agentImage: property.agentImage,
       userName: user?.displayName,
       userEmail: user?.email,
     };
