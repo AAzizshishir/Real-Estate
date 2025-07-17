@@ -21,6 +21,8 @@ import SoldProperties from "../pages/agentPage/soldProperties/SoldProperties";
 import ManageReviews from "../pages/adminpage/managereviews/ManageReviews";
 import AdvertiseProperties from "../pages/adminpage/advertiseproperties/AdvertiseProperties";
 import PrivateRoutes from "../routes/PrivateRoutes";
+import AdminRoutes from "../routes/AdminRoutes";
+import AgentRoutes from "../routes/AgentRoutes";
 
 const router = createBrowserRouter([
   {
@@ -68,40 +70,76 @@ const router = createBrowserRouter([
       // Agent Routes
       {
         path: "add-property",
-        element: <AddProperty></AddProperty>,
+        element: (
+          <AgentRoutes>
+            <AddProperty></AddProperty>
+          </AgentRoutes>
+        ),
       },
       {
         path: "my-properties",
-        element: <MyProperties></MyProperties>,
+        element: (
+          <AgentRoutes>
+            <MyProperties></MyProperties>
+          </AgentRoutes>
+        ),
       },
       {
         path: "update-property/:id",
-        element: <UpdateProperty></UpdateProperty>,
+        element: (
+          <AgentRoutes>
+            <UpdateProperty></UpdateProperty>
+          </AgentRoutes>
+        ),
       },
       {
         path: "sold-properties",
-        element: <SoldProperties></SoldProperties>,
+        element: (
+          <AgentRoutes>
+            <SoldProperties></SoldProperties>
+          </AgentRoutes>
+        ),
       },
       {
         path: "requested-properties",
-        element: <RequestedProperties></RequestedProperties>,
+        element: (
+          <AgentRoutes>
+            <RequestedProperties></RequestedProperties>
+          </AgentRoutes>
+        ),
       },
       // Admin Routes
       {
         path: "manage-users",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoutes>
+            <ManageUsers></ManageUsers>
+          </AdminRoutes>
+        ),
       },
       {
         path: "manage-properties",
-        element: <ManageProperties></ManageProperties>,
+        element: (
+          <AdminRoutes>
+            <ManageProperties></ManageProperties>
+          </AdminRoutes>
+        ),
       },
       {
         path: "manage-reviews",
-        element: <ManageReviews></ManageReviews>,
+        element: (
+          <AdminRoutes>
+            <ManageReviews></ManageReviews>
+          </AdminRoutes>
+        ),
       },
       {
         path: "advertise-properties",
-        element: <AdvertiseProperties></AdvertiseProperties>,
+        element: (
+          <AdminRoutes>
+            <AdvertiseProperties></AdvertiseProperties>
+          </AdminRoutes>
+        ),
       },
       // User Routes
       {

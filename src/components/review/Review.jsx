@@ -26,7 +26,7 @@ const Review = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {reviews.map((review) => (
           <div
-            key={review.id}
+            key={review._id}
             className="bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow hover:shadow-lg transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-4">

@@ -10,13 +10,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase.config";
+import axios from "axios";
 
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState("");
-  console.log("Photo URL:", user?.photoURL);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -46,6 +46,13 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       setLoading(false);
+      axios
+        .post("http://localhost:5000/jwt", { email: currentUser?.email })
+        .then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
     });
     return () => {
       unsubscribe();
