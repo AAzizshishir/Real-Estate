@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
@@ -12,26 +14,29 @@ const Footer = () => {
           <h3 className="font-semibold text-white mb-4">Quick Links</h3>
           <ul className="space-y-2">
             <li>
-              <a href="#" className="hover:text-primary transition">
+              <Link to={"/"} className="hover:text-primary transition">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-primary transition">
+              <Link
+                to="/all-properties"
+                className="hover:text-primary transition"
+              >
                 All Properties
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-primary transition">
+              <Link to="dashboard" className="hover:text-primary transition">
                 Dashboard
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         {/* Column 3 */}
         <div>
           <h3 className="font-semibold text-white mb-4">Contact Us</h3>
-          <p>Email: support@propease.com</p>
+          <p>Email: support@estatehub.com</p>
           <p>Phone: +880 123-456-789</p>
         </div>
       </div>
