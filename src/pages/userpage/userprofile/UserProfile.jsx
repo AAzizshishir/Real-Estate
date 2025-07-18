@@ -95,7 +95,7 @@ const UserProfile = () => {
         {/* Purchased Properties */}
         <div className="bg-white rounded-2xl shadow p-4">
           <h3 className="text-xl font-bold mb-2 flex items-center gap-2 text-blue-600">
-            <FaMoneyCheck /> Purchased Properties ({purchasedProperties.length})
+            <FaMoneyCheck /> Purchased Properties ({boughtProperties.length})
           </h3>
           <ul className="list-disc ml-5 text-gray-700">
             {boughtProperties.map((prop) => (

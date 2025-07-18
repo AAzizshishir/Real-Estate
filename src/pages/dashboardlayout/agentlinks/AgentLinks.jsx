@@ -12,7 +12,7 @@ const AgentLinks = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/profile"
+          to="/dashboard/agent-profile"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
