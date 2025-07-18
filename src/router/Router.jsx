@@ -24,6 +24,7 @@ import PrivateRoutes from "../routes/PrivateRoutes";
 import AdminRoutes from "../routes/AdminRoutes";
 import AgentRoutes from "../routes/AgentRoutes";
 import PageNotFound from "../pages/pagenotfound/PageNotFound";
+import UserProfile from "../pages/userpage/userprofile/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -144,6 +145,10 @@ const router = createBrowserRouter([
         ),
       },
       // User Routes
+      {
+        path: "user-profile",
+        element: <UserProfile></UserProfile>,
+      },
       {
         path: "wishlist",
         element: <Wishlist></Wishlist>,

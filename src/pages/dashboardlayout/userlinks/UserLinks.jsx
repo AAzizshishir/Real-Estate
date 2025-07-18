@@ -6,7 +6,7 @@ const UserLinks = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/profile"
+          to="/dashboard/user-profile"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
