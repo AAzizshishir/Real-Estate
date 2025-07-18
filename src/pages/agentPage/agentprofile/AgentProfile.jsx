@@ -2,7 +2,6 @@ import { MdCancel, MdPending, MdVerified } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-// import moment from "moment";
 
 const AgentProfile = () => {
   const { user } = useAuth(); // Logged-in user
