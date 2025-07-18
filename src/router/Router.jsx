@@ -27,6 +27,7 @@ import PageNotFound from "../pages/pagenotfound/PageNotFound";
 import UserProfile from "../pages/userpage/userprofile/UserProfile";
 import AgentProfile from "../pages/agentPage/agentprofile/AgentProfile";
 import AdminProfile from "../pages/adminpage/adminprofile/AdminProfile";
+import DashboardHome from "../pages/dashboardlayout/dashboardhome/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       </PrivateRoutes>
     ),
     children: [
+      {
+        index: true,
+        element: <DashboardHome></DashboardHome>,
+      },
       // Agent Routes
       {
         path: "agent-profile",
