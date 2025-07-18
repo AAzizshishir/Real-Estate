@@ -29,7 +29,7 @@ const TopAgent = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {topAgents.map((agent) => (
           <div
-            key={agent.id}
+            key={agent._id}
             className="bg-white dark:bg-neutral-800 rounded-lg shadow hover:shadow-lg transition-all duration-300 text-center p-6"
           >
             <img

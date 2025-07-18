@@ -65,7 +65,7 @@ const Navbar = () => {
           <img
             src="https://i.ibb.co/WWH1HchV/logo.jpg"
             alt="PropEase"
-            className="w-8 h-8"
+            className="w-8 h-8 rounded-full"
           />
           <span className="text-xl font-bold text-primary">EstateHub</span>
         </div>

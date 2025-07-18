@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Link } from "react-router";
 
 const bannerCombo = [
   {
@@ -39,10 +40,6 @@ const Banner = () => {
         navigation
         pagination={{ clickable: true }}
       >
-        {/* <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide> */}
         {bannerCombo.map((item, index) => (
           <SwiperSlide key={index}>
             <div
@@ -51,11 +48,14 @@ const Banner = () => {
                 backgroundImage: `url(${item.image})`,
               }}
             >
-              <h2 className="text-4xl font-bold">{item.title}</h2>
-              <p className="mt-4">{item.subtitle}</p>
-              <button className="mt-6 px-6 py-2 bg-primary text-white rounded">
-                {item.cta}
-              </button>
+              <div className="absolute inset-0 bg-black opacity-60"></div>
+              <h2 className="text-4xl relative z-10 font-bold">{item.title}</h2>
+              <p className="mt-4 relative z-10">{item.subtitle}</p>
+              <Link to={"/all-properties"}>
+                <button className="mt-6 px-6 btn py-2 bg-primary text-white rounded relative z-10">
+                  {item.cta}
+                </button>
+              </Link>
             </div>
           </SwiperSlide>
         ))}
