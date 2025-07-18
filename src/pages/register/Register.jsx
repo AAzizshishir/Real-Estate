@@ -8,6 +8,7 @@ import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { useMutation } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { auth } from "../../../firebase.config";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,8 +47,11 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      // ✅ Create user
+      // ✅ Create user in Firebase
       await createUser(data.email, data.password);
+
+      // ✅ Get current Firebase user
+      const user = auth.currentUser;
 
       // ✅ Upload image
       const imageFile = data.file[0];
@@ -75,6 +79,7 @@ const Register = () => {
           email: data.email,
           image: imageUrl,
           role: "user",
+          uid: user.uid, // ✅ Add Firebase UID
           createdAt: new Date(),
         };
 

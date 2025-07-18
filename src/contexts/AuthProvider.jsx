@@ -46,13 +46,19 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       setLoading(false);
-      axios
-        .post("http://localhost:5000/jwt", { email: currentUser?.email })
-        .then((res) => {
-          if (res.data.token) {
+      if (currentUser && currentUser.email) {
+        axios
+          .post("http://localhost:5000/jwt", { email: currentUser.email })
+          .then((res) => {
             localStorage.setItem("access-token", res.data.token);
-          }
-        });
+          })
+          .catch((error) => {
+            console.error("JWT error:", error.message);
+          });
+      } else {
+        // ✅ Remove token when user logs out
+        localStorage.removeItem("access-token");
+      }
     });
     return () => {
       unsubscribe();
