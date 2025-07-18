@@ -26,6 +26,7 @@ import AgentRoutes from "../routes/AgentRoutes";
 import PageNotFound from "../pages/pagenotfound/PageNotFound";
 import UserProfile from "../pages/userpage/userprofile/UserProfile";
 import AgentProfile from "../pages/agentPage/agentprofile/AgentProfile";
+import AdminProfile from "../pages/adminpage/adminprofile/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -121,6 +122,14 @@ const router = createBrowserRouter([
         ),
       },
       // Admin Routes
+      {
+        path: "admin-profile",
+        element: (
+          <AdminRoutes>
+            <AdminProfile></AdminProfile>
+          </AdminRoutes>
+        ),
+      },
       {
         path: "manage-users",
         element: (

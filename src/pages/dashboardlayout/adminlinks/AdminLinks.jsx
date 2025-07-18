@@ -12,7 +12,7 @@ const AdminLinks = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard/profile"
+          to="/dashboard/admin-profile"
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
