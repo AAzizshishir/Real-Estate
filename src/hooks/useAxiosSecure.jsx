@@ -22,7 +22,7 @@ const useAxiosSecure = () => {
       return res;
     },
     (error) => {
-      const status = error.status;
+      const status = error.response?.status;
       if (status === 403) {
         navigate("/dashboard");
       } else if (status === 401) {
