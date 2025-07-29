@@ -1,30 +1,3 @@
-// const content = [
-//   {
-//     id: 1,
-//     image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
-//     title: "Modern Family House",
-//     location: "Uttara, Dhaka",
-//     priceRange: "$250,000 - $300,000",
-//     isVerified: true,
-//   },
-//   {
-//     id: 2,
-//     image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
-//     title: "Luxury Apartment",
-//     location: "Gulshan, Dhaka",
-//     priceRange: "$400,000 - $500,000",
-//     isVerified: false,
-//   },
-//   {
-//     id: 3,
-//     image: "https://i.ibb.co/3yHDX9Sx/new-buildings-with-green-areas.jpg",
-//     title: "Cozy Villa",
-//     location: "Dhanmondi, Dhaka",
-//     priceRange: "$350,000 - $420,000",
-//     isVerified: true,
-//   },
-// ];
-
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
