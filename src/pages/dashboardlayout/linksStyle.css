@@ -8,11 +8,9 @@
 }
 
 .sidebar-link:hover {
-  background-color: var(--color-primary);
-  color: white;
+  color: var(--color-primary);
 }
 
 .sidebar-link-active {
-  background-color: var(--color-primary);
-  color: white;
+  color: var(--color-primary);
 }

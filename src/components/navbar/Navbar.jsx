@@ -58,7 +58,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-white shadow sticky top-0 z-50">
+    <nav className="w-full bg-white text-text shadow fixed top-0 left-0 z-50 px-4 md:px-10">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 h-16 relative">
         {/* Logo */}
         <div className="flex items-center gap-2">

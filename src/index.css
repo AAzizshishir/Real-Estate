@@ -9,13 +9,16 @@
   default: true;
 
   /* Colors */
-  --color-primary: "#2ecc71";
-  --color-secondary: "#2c3e50";
-  --color-accent: "#ffa500";
-  --color-lightBg: "#f9f9f9";
-  --color-darkBg: "#1a1a1a";
-  --color-textLight: "#ffffff";
-  --color-textDark: "#333333";
+  --color-primary: "#4F46E5";
+  --color-secondary: "#64748B";
+  --color-accent: "#0EA5E9";
+  --color-text: "#1F2937";
+  --color-bg: "#FFFFFF";
+  --color-info: "#3ABFF8";
+  --color-success: "#36D399";
+  --color-warning: "#FBBD23";
+  --color-error: "#F87272";
+
   /* ... */
 }
 

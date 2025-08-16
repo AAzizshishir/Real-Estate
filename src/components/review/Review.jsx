@@ -13,7 +13,7 @@ const Review = () => {
   });
 
   return (
-    <section className="py-12 px-4 md:px-8 lg:px-16 bg-white dark:bg-neutral-900 mt-20">
+    <section className="py-12 px-4 md:px-8 lg:px-16 mt-20">
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
           What Our Clients Say
