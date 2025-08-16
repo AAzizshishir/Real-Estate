@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import useUserRole from "../../hooks/useUserRole";
+import axios from "axios";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -23,7 +24,9 @@ const PropertyDetails = () => {
   const { data: property = {}, isLoading } = useQuery({
     queryKey: ["property", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/properties/${id}`);
+      const res = await axios.get(
+        `https://real-estate-server-weld.vercel.app/properties/${id}`
+      );
       return res.data;
     },
     enabled: !!id,
@@ -33,7 +36,9 @@ const PropertyDetails = () => {
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/reviews/${id}`);
+      const res = await axios.get(
+        `https://real-estate-server-weld.vercel.app/reviews/${id}`
+      );
       return res.data;
     },
     enabled: !!id,

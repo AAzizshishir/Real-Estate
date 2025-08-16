@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import Loader from "../../components/Loader/Loader";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { MdVerified } from "react-icons/md";
 import { useState } from "react";
+import axios from "axios";
 
 const AllProperties = () => {
-  const axiosSecure = useAxiosSecure();
   const [searchText, setSearchText] = useState("");
 
   const { data: properties = [], isLoading } = useQuery({
     queryKey: ["verifiedProperties"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/properties/verified");
+      const res = await axios.get(
+        "https://real-estate-server-weld.vercel.app/properties/verified"
+      );
       return res.data;
     },
   });
