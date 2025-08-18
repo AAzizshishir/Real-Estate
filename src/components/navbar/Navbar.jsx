@@ -38,7 +38,17 @@ const Navbar = () => {
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          About Us
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/contact_us"}
+          className={({ isActive }) =>
+            isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+          }
+        >
+          Contact
         </NavLink>
       </li>
       {user && (

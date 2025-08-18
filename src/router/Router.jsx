@@ -29,6 +29,7 @@ import AgentProfile from "../pages/agentPage/agentprofile/AgentProfile";
 import AdminProfile from "../pages/adminpage/adminprofile/AdminProfile";
 import DashboardHome from "../pages/dashboardlayout/dashboardhome/DashboardHome";
 import AboutUs from "../pages/aboutUs/AboutUs";
+import ContactUs from "../pages/contactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "about_us",
         element: <AboutUs />,
+      },
+      {
+        path: "contact_us",
+        element: <ContactUs />,
       },
     ],
   },
