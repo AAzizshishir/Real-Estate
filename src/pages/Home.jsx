@@ -1,5 +1,6 @@
 import Advertisement from "../components/advertisement/Advertisement";
 import Banner from "../components/banner/Banner";
+import OurPertners from "../components/ourpertners/OurPertners";
 import Review from "../components/review/Review";
 import TopAgent from "../components/topagent/TopAgent";
 import WhyChooseUs from "../components/whychooseus/WhyChooseUs";
@@ -14,6 +15,7 @@ const Home = () => {
         <Review></Review>
         <WhyChooseUs></WhyChooseUs>
         <TopAgent></TopAgent>
+        <OurPertners />
       </div>
     </div>
   );

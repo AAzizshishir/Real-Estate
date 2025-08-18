@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Advertisement = () => {
   const axiosSecure = useAxiosSecure();
@@ -39,7 +40,11 @@ const Advertisement = () => {
             <div className="p-2 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-1">{item.location}</p>
+                <p className="mt-1 flex items-center gap-1">
+                  <FaLocationDot />
+                  {item.location}
+                </p>
+                <p className="py-1">{item.description}</p>
                 <p className="text-primary font-medium mt-2">
                   ${item.minPrice} - ${item.maxPrice}
                 </p>

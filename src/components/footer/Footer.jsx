@@ -1,3 +1,4 @@
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router";
 
 const Footer = () => {
@@ -37,7 +38,18 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-white mb-4">Contact Us</h3>
           <p>Email: support@estatehub.com</p>
-          <p>Phone: +880 123-456-789</p>
+          <p className="my-1">Phone: +880 123-456-789</p>
+          <div className="flex gap-3 mt-3">
+            <Link to={"https://www.linkedin.com/in/aashishir/"}>
+              <FaLinkedin size={22} />
+            </Link>
+            <Link to={"https://www.facebook.com/abdul.aziz.shishir.2025"}>
+              <FaFacebook size={22} />
+            </Link>
+            <Link to={"https://github.com/AAzizshishir"}>
+              <FaGithub size={22} />
+            </Link>
+          </div>
         </div>
       </div>
       <div className="text-center text-gray-500 mt-8 border-t border-gray-700 pt-4 text-sm">
