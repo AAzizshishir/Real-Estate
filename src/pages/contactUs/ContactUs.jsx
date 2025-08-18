@@ -132,7 +132,7 @@ const ContactUs = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-[#2c22e9] transition"
+            className="bg-primary cursor-pointer text-white px-6 py-3 rounded-lg hover:bg-[#2c22e9] transition"
           >
             {isLoading ? "Sending..." : "Send Message"}
           </button>

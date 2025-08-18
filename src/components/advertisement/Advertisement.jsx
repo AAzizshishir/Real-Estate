@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Link } from "react-router";
 import { FaLocationDot } from "react-icons/fa6";
+import { MdVerified } from "react-icons/md";
 
 const Advertisement = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,15 +46,17 @@ const Advertisement = () => {
                   {item.location}
                 </p>
                 <p className="py-1">{item.description}</p>
-                <p className="text-primary font-medium mt-2">
+                <p className="text-primary font-medium my-2">
                   ${item.minPrice} - ${item.maxPrice}
                 </p>
 
-                <p
-                  className={`mt-2 inline-block px-3 py-1 rounded-full text-xs bg-green-100 text-green-600 `}
-                >
-                  Verified
-                </p>
+                <div className="flex items-center gap-1">
+                  <MdVerified
+                    size={24}
+                    className={item.status === "verified" && "text-green-500"}
+                  />
+                  <span>Verified</span>
+                </div>
               </div>
 
               <Link to={`/property-details/${item._id}`}>
