@@ -37,7 +37,7 @@ const AllProperties = () => {
         />
       </div>
 
-      <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="p-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {isLoading ? (
           <Loader></Loader>
         ) : filtered.length === 0 ? (
@@ -46,7 +46,7 @@ const AllProperties = () => {
           filtered.map((property) => (
             <div
               key={property._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col"
+              className="bg-gray-100 shadow-lg rounded-lg overflow-hidden flex flex-col"
             >
               <img
                 src={property.image}

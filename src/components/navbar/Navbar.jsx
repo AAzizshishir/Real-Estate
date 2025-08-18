@@ -33,14 +33,26 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to={"/dashboard"}
+          to={"/about_us"}
           className={({ isActive }) =>
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          Dashboard
+          About Us
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink
+            to={"/dashboard"}
+            className={({ isActive }) =>
+              isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
 

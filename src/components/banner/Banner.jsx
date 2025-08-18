@@ -13,7 +13,7 @@ const bannerCombo = [
     title: "Live Where Your Dreams Belong",
     subtitle: " Explore Beautiful Spaces that truly feel yours",
     cta: "Start Your Journey",
-    image: "https://i.ibb.co/4RtzbfZF/3d-rendering-house-model.jpg",
+    image: "https://i.postimg.cc/sfKQR7jj/3d-rendering-house-model-1-1.jpg",
   },
   {
     title: "Move Smart, Live Better",

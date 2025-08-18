@@ -28,6 +28,7 @@ import UserProfile from "../pages/userpage/userprofile/UserProfile";
 import AgentProfile from "../pages/agentPage/agentprofile/AgentProfile";
 import AdminProfile from "../pages/adminpage/adminprofile/AdminProfile";
 import DashboardHome from "../pages/dashboardlayout/dashboardhome/DashboardHome";
+import AboutUs from "../pages/aboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "property-details/:id",
         element: <PropertyDetails></PropertyDetails>,
+      },
+      {
+        path: "about_us",
+        element: <AboutUs />,
       },
     ],
   },
