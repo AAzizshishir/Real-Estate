@@ -28,7 +28,7 @@ const Navbar = () => {
             isActive ? "sidebar-link sidebar-link-active" : "sidebar-link"
           }
         >
-          All Properties
+          Properties
         </NavLink>
       </li>
       <li>
@@ -71,7 +71,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-white text-text shadow fixed top-0 left-0 z-50 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 h-16 relative">
+      <div className="flex items-center justify-between h-16 relative">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img
@@ -83,7 +83,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Links */}
-        <ul className="hidden lg:flex gap-6 justify-center absolute left-1/2 transform -translate-x-1/2">
+        <ul className="hidden lg:flex gap-2 justify-center absolute left-1/2 transform -translate-x-1/2">
           {links}
         </ul>
 

@@ -35,10 +35,10 @@ const WhyChooseUs = () => {
       className="relative py-16 px-4 md:px-8 bg-cover bg-center text-white mt-20"
       style={{
         backgroundImage:
-          "url('https://i.ibb.co/4RtzbfZF/3d-rendering-house-model.jpg')",
+          "url('https://i.postimg.cc/SxSbzM41/jason-dent-w3e-Fhq-Xjk-ZE-unsplash.jpg')",
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-60"></div>
+      <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="relative z-10 max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-2">Why Choose Us</h2>
         <p className="text-gray-300">

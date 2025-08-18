@@ -43,7 +43,7 @@ const Banner = () => {
         {bannerCombo.map((item, index) => (
           <SwiperSlide key={index}>
             <div
-              className="w-full h-[600px] bg-center bg-cover flex flex-col justify-center items-center text-white"
+              className="w-full h-[600px] bg-center bg-cover flex flex-col justify-center items-center text-white mt-16"
               style={{
                 backgroundImage: `url(${item.image})`,
               }}

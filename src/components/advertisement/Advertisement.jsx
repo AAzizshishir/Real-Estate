@@ -14,21 +14,21 @@ const Advertisement = () => {
   });
 
   return (
-    <section className="py-12 px-4 md:px-8 lg:px-16 mt-20">
-      <div className="text-center mb-10">
+    <section className="mt-16">
+      <div className="text-center mb-4">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
           Featured Properties
         </h2>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-gray-700">
           Explore our hand-picked properties currently on top advertisement
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {advertise.map((item) => (
           <div
             key={item._id}
-            className="bg-white dark:bg-neutral-800 shadow-lg rounded-lg overflow-hidden flex flex-col"
+            className="bg-gray-200 text-black shadow-lg rounded-lg overflow-hidden flex flex-col"
           >
             <img
               src={item.image}
@@ -38,12 +38,8 @@ const Advertisement = () => {
 
             <div className="p-2 flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 dark:text-gray-300 mt-1">
-                  {item.location}
-                </p>
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="mt-1">{item.location}</p>
                 <p className="text-primary font-medium mt-2">
                   ${item.minPrice} - ${item.maxPrice}
                 </p>

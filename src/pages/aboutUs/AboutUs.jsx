@@ -10,7 +10,7 @@ import { GoGoal } from "react-icons/go";
 
 const AboutUs = () => {
   return (
-    <section className="mt-20 min-h-screen">
+    <section className="mt-20 min-h-screen px-4 lg:px-10">
       <div className="bg-[url(https://i.postimg.cc/YC7CGSqn/urban-traffic-with-cityscape-1.jpg)] w-full h-[240px] bg-cover bg-center bg-no-repeat object-cover relative">
         <div className="absolute bg-black/50 inset-0"></div>
         <h2 className="text-5xl md:text-6xl font-bold text-white pl-10 pt-10 md:pl-20 md:pt-20 z-50 relative">
@@ -22,7 +22,7 @@ const AboutUs = () => {
         </p>
       </div>
 
-      <div className="my-16 px-4 lg:px-10">
+      <div className="my-16">
         <h2 className="text-center font-medium text-4xl md:text-5xl pb-4 max-w-[600px] mx-auto">
           Your Reliable Partner In Real Estate Success
         </h2>
@@ -48,7 +48,7 @@ const AboutUs = () => {
         </div>
 
         {/* Mission & Vission */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10 mt-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 mt-5">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <GiQueenCrown className="text-4xl" />

@@ -2,8 +2,8 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gray-900 text-gray-300 py-10 px-4 lg:px-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Column 1 */}
         <div>
           <h2 className="text-xl font-bold text-white mb-4">EstateHub</h2>
@@ -27,8 +27,8 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="dashboard" className="hover:text-primary transition">
-                Dashboard
+              <Link to="about_us" className="hover:text-primary transition">
+                About Us
               </Link>
             </li>
           </ul>

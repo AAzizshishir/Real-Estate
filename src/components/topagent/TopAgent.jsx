@@ -16,19 +16,19 @@ const TopAgent = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16 my-20">
-      <div className="text-center mb-10">
+    <section className="my-16">
+      <div className="text-center mb-4">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
           A Real Estate Agent You Can Trust
         </h2>
         <p className="">Meet our most trusted and high-performing agents</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {topAgents.map((agent) => (
           <div
             key={agent._id}
-            className="bg-gray-300 rounded-lg shadow hover:shadow-lg transition-all duration-300 text-center p-6"
+            className="bg-gray-100 rounded-lg shadow hover:shadow-lg transition-all duration-300 text-center p-6"
           >
             <img
               src={agent.image}

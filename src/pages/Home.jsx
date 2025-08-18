@@ -9,7 +9,7 @@ const Home = () => {
     <div className="bg-background text-black">
       {/* Banner */}
       <Banner></Banner>
-      <div className="max-w-7xl mx-auto">
+      <div className="px-4 lg:px-10">
         <Advertisement></Advertisement>
         <Review></Review>
         <WhyChooseUs></WhyChooseUs>
