@@ -16,7 +16,7 @@ const OurPertners = () => {
           We are pleased to work with our partners
         </p>
       </div>
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4">
         <div className="w-[260px] h-[130px] p-8 shadow-md rounded-md">
           <img src={perner1} className="" alt="Our Partner" />
         </div>

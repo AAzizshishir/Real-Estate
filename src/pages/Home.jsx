@@ -1,3 +1,4 @@
+import Faq from "../components/accordian/Faq";
 import Advertisement from "../components/advertisement/Advertisement";
 import Banner from "../components/banner/Banner";
 import OurPertners from "../components/ourpertners/OurPertners";
@@ -9,13 +10,14 @@ const Home = () => {
   return (
     <div className="bg-background text-black">
       {/* Banner */}
-      <Banner></Banner>
+      <Banner />
       <div className="px-4 lg:px-10">
-        <Advertisement></Advertisement>
-        <Review></Review>
-        <WhyChooseUs></WhyChooseUs>
-        <TopAgent></TopAgent>
+        <Advertisement />
+        <Review />
+        <WhyChooseUs />
+        <TopAgent />
         <OurPertners />
+        <Faq />
       </div>
     </div>
   );
